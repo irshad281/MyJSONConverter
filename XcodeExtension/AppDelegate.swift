@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  MyPlugin
+//  XcodeExtension
 //
 //  Created by Innotical  Solutions  on 06/01/18.
 //  Copyright © 2018 Innotical  Solutions . All rights reserved.
