@@ -22,13 +22,17 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         let dateFrrmater = DateFormatter.init()
         dateFrrmater.dateStyle = .medium
         var jsonString = ""
-        let myDeclaration = "//\n/*====Created by JSON2SwiftConverterExtension  on \(dateFrrmater.string(from: Date()))====*/\n //Developed by Irshad Ahmed(👨🏼‍💻).\n//Contact Email:- ahmedirshad281@gmail.com\n//\n\nimport Foundation\nimport SwiftyJSON\n"
+        var myDeclaration = "/*====Created by JSON2SwiftConverterExtension  on \(dateFrrmater.string(from: Date()))====*/\n //Developed by Irshad Ahmed(👨🏼‍💻). Contact Email:- ahmedirshad281@gmail.com\n"
+        let requirement = "\n/*==================================== Requirement ====================================\n\nIf you don't have JSONDecodable protocol method then use the below protocol...\n\npublic protocol JSONDecodable{\n\tinit(json:JSON)\n}\n\nIf you don't have decode method then use the below it..\n\nextension Collection where Iterator.Element == JSON {\n\tfunc decode<T:JSONDecodable>() -> [T] {\n\t\treturn map({T(json:$0)})\n\t}\n}\n*/"
+        myDeclaration.append(requirement)
+        let name = "\n\nimport Foundation\nimport SwiftyJSON\n"
+        myDeclaration.append(name)
         var convertedString = "\n\nclass MyModel:JSONDecodable{\n"
         var initilizerString = "required init(json: JSON) {\n"
         var mainConvertedString = "\(myDeclaration)"
         
         var otherObjectsArray:[String] = []
-        
+        /**/
         for index in range.start.line...range.end.line {
             jsonString += buffer.lines[index] as! String
         }
